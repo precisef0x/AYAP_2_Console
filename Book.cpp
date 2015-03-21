@@ -35,6 +35,18 @@ Book::~Book()
     
 }
 
+bool Book::operator==(const Book & input)
+{
+    if(input.author == this->author &&
+       input.available == this->available &&
+       input.pagesNumber==this->pagesNumber &&
+       input.pubYear == this->pubYear &&
+       input.rating == this->rating &&
+       input.title==this->title)
+        return true;
+    else return false;
+}
+
 Book& Book::operator=(const Book & input)
 {
     Book *copy = new Book(input.title, input.author, input.pubYear, input.rating, input.pagesNumber, input.available);

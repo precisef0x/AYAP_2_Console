@@ -1,10 +1,10 @@
+#ifndef AYAP_2_Console_Book_h
+#define AYAP_2_Console_Book_h
+
 #include <iostream>
 #include <string>
 
 using namespace std;
-
-#ifndef AYAP_2_Console_Book_h
-#define AYAP_2_Console_Book_h
 
 class Book
 {
@@ -21,6 +21,7 @@ public:
     Book(string title, string author, bool available);
     ~Book();
     Book& operator=(const Book &);
+    bool operator==(const Book &);
     string getAuthor();
     string getTitle();
     int getPubYear();
