@@ -135,9 +135,5 @@ void Book::setAllParameters(string arg1, string arg2, int arg3, float arg4, int 
 
 void Book::printBookInfo()
 {
-    cout << "Book \"" << title << "\" by " << author << ':' << endl;
-    cout << "Publishing year: " << pubYear << endl;
-    cout << "Rating: " << rating << endl;
-    cout << "Pages number: " << pagesNumber << endl;
-    cout << (available ? "Available " : "Not available ") << "in the library" << endl;
+    cout << this;
 }
