@@ -1,0 +1,116 @@
+We created a book:
+Book "Unknown title" by Unknown author:
+Publishing year: 0
+Rating: 0
+Pages number: 0
+Not available in the library
+
+Book "Unknown title" by Unknown author:
+Publishing year: 0
+Rating: 0
+Pages number: 0
+Not available in the library
+
+Book "The adventures of Sherlock Holmes" by Arthur Conan Doyle:
+Publishing year: 0
+Rating: 0
+Pages number: 0
+Available in the library
+
+Library "My favorite library":
+Opened from 00:00 to 23:59
+Address: Right around the corner
+Books number: 0
+
+Library "My favorite library":
+Opened from 00:00 to 23:59
+Address: Right around the corner
+Books number: 2
+
+Book "The adventures of Sherlock Holmes" by Arthur Conan Doyle:
+Publishing year: 0
+Rating: 0
+Pages number: 0
+Available in the library
+Book "The Mystery of Cloomber" by Arthur Conan Doyle:
+Publishing year: 0
+Rating: 0
+Pages number: 0
+Not available in the library
+
+New library: 
+Library "My favorite library":
+Opened from 00:00 to 23:59
+Address: Right around the corner
+Books number: 3
+Book "The adventures of Sherlock Holmes" by Arthur Conan Doyle:
+Publishing year: 0
+Rating: 0
+Pages number: 0
+Available in the library
+Book "The Mystery of Cloomber" by Arthur Conan Doyle:
+Publishing year: 0
+Rating: 0
+Pages number: 0
+Not available in the library
+Book "Cool title" by A genius:
+Publishing year: 2015
+Rating: 0.12
+Pages number: 200
+Available in the library
+
+The third library: 
+Library "My favorite library & Unknown library":
+Opened from 00:00 to 23:59
+Address: Right around the corner & Right around the corner
+Books number: 5
+Book "The adventures of Sherlock Holmes" by Arthur Conan Doyle:
+Publishing year: 0
+Rating: 0
+Pages number: 0
+Available in the library
+Book "The Mystery of Cloomber" by Arthur Conan Doyle:
+Publishing year: 0
+Rating: 0
+Pages number: 0
+Not available in the library
+Book "The adventures of Sherlock Holmes" by Arthur Conan Doyle:
+Publishing year: 0
+Rating: 0
+Pages number: 0
+Available in the library
+Book "The Mystery of Cloomber" by Arthur Conan Doyle:
+Publishing year: 0
+Rating: 0
+Pages number: 0
+Not available in the library
+Book "Cool title" by A genius:
+Publishing year: 2015
+Rating: 0.12
+Pages number: 200
+Available in the library
+
+Library "My favorite library & Unknown library":
+Opened from 00:00 to 23:59
+Address: Right around the corner & Right around the corner
+Books number: 4
+Book "The adventures of Sherlock Holmes" by Arthur Conan Doyle:
+Publishing year: 0
+Rating: 0
+Pages number: 0
+Available in the library
+Book "The Mystery of Cloomber" by Arthur Conan Doyle:
+Publishing year: 0
+Rating: 0
+Pages number: 0
+Not available in the library
+Book "The adventures of Sherlock Holmes" by Arthur Conan Doyle:
+Publishing year: 0
+Rating: 0
+Pages number: 0
+Available in the library
+Book "The Mystery of Cloomber" by Arthur Conan Doyle:
+Publishing year: 0
+Rating: 0
+Pages number: 0
+Not available in the library
