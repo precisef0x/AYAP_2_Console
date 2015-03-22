@@ -27,6 +27,17 @@ Schedule::~Schedule()
     
 }
 
+Schedule& Schedule::operator+(const Schedule &input)
+{
+    Time newOpen, newClose;
+    if(open.hours*60 + open.minutes >= input.open.hours*60 + input.open.minutes) newOpen = input.open;
+    else newOpen = open;
+    if(close.hours*60 + close.minutes <= input.close.hours*60 + input.close.minutes) newClose = input.close;
+    else newClose = close;
+    Schedule *newSchedule = new Schedule(newOpen, newClose);
+    return *newSchedule;
+}
+
 string Schedule::printOpen()
 {
     stringstream buffer;

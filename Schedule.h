@@ -23,6 +23,7 @@ public:
     Schedule(Time open, Time close);
     Schedule(int openH,int openM,int closeH,int closeM);
     ~Schedule();
+    Schedule& operator+(const Schedule&);
     string printOpen();
     string printClose();
     Time getOpenTime();
