@@ -25,6 +25,10 @@ public:
     ~Schedule();
     string printOpen();
     string printClose();
+    Time getOpenTime();
+    Time getCloseTime();
+    void setTime(Time open, Time close);
+    void setTime(int openH,int openM,int closeH,int closeM);
 };
 
-#endif /* defined(__AYAP_2_Console__Schedule__) */
+#endif

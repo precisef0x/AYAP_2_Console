@@ -2,10 +2,10 @@
 
 Schedule::Schedule()
 {
-    this->open.hours = 0;
-    this->open.minutes = 0;
-    this->close.hours = 23;
-    this->close.minutes = 59;
+    open.hours = 0;
+    open.minutes = 0;
+    close.hours = 23;
+    close.minutes = 59;
 }
 
 Schedule::Schedule(int openH,int openM,int closeH,int closeM)
@@ -40,3 +40,29 @@ string Schedule::printClose()
     buffer << ((close.hours>9) ? "" : "0") << close.hours << ':' << ((close.minutes>9) ? "" : "0") << close.minutes;
     return buffer.str();
 }
+
+Time Schedule::getOpenTime()
+{
+    return open;
+}
+
+Time Schedule::getCloseTime()
+{
+    return close;
+}
+
+void Schedule::setTime(Time open, Time close)
+{
+    this->open = open;
+    this->close = close;
+}
+
+void Schedule::setTime(int openH,int openM,int closeH,int closeM)
+{
+    this->open.hours = openH;
+    this->open.minutes = openM;
+    this->close.hours = closeH;
+    this->close.minutes = closeM;
+}
+
+
