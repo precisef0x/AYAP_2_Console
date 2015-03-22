@@ -10,7 +10,6 @@ class Library
 private:
     string name;
     string address;
-    int booksNumber;
     vector<Book>books;
     Schedule schedule;
 public:
@@ -19,11 +18,12 @@ public:
     Library(Library&);
     ~Library();
     Library& operator=(const Library &);
-    string getName();
-    string getAddress();
-    int getBooksNumber();
-    vector<Book> getBooks();
-    Schedule getSchedule();
+    Library& operator+(Library &);
+    string getName() const;
+    string getAddress() const;
+    int getBooksNumber() const;
+    vector<Book>& getBooks();
+    Schedule& getSchedule();
     void setName(string);
     void setAddress(string);
     void setBooks(vector<Book>);

@@ -4,7 +4,6 @@ Library::Library()
 {
     name = "Unknown library";
     address = "Unknown place";
-    booksNumber = 0;
 }
 
 Library::Library(string name, string address, vector<Book> books, Schedule schedule)
@@ -12,7 +11,6 @@ Library::Library(string name, string address, vector<Book> books, Schedule sched
     this->name = name;
     this->address = address;
     this->books = books;
-    this->booksNumber = (int)books.size();
     this->schedule = schedule;
 }
 
@@ -21,13 +19,12 @@ Library::Library(Library& input)
     this->name = input.name;
     this->address = input.address;
     this->books = input.books;
-    this->booksNumber = input.booksNumber;
     this->schedule = input.schedule;
 }
 
 Library::~Library()
 {
-
+    books.clear();
 }
 
 Library& Library::operator=(const Library &input)
@@ -36,27 +33,39 @@ Library& Library::operator=(const Library &input)
     return *newLibrary;
 }
 
-string Library::getName()
+Library& Library::operator+(Library &input)
+{
+    Library *newLibrary = new Library();
+    newLibrary->setName(this->getName() + " & " + input.getName());
+    vector<Book> newVector = this->getBooks();
+    newVector.insert( newVector.end(), input.getBooks().begin(), input.getBooks().end());
+    newLibrary->setBooks(newVector);
+    newLibrary->setAddress(this->getAddress() + " & " + input.getAddress());
+    newLibrary->setSchedule(this->getSchedule() + input.schedule);
+    return *newLibrary;
+}
+
+string Library::getName() const
 {
     return name;
 }
 
-string Library::getAddress()
+string Library::getAddress() const
 {
     return address;
 }
 
-int Library::getBooksNumber()
+int Library::getBooksNumber() const
 {
-    return booksNumber;
+    return (int)books.size();
 }
 
-vector<Book> Library::getBooks()
+vector<Book>& Library::getBooks()
 {
     return books;
 }
 
-Schedule Library::getSchedule()
+Schedule& Library::getSchedule()
 {
     return schedule;
 }
@@ -74,7 +83,6 @@ void Library::setAddress(string arg1)
 void Library::setBooks(vector<Book> arg1)
 {
     books = arg1;
-    booksNumber = (int)arg1.size();
 }
 
 void Library::setSchedule(Schedule arg1)
@@ -87,15 +95,15 @@ void Library::printLibraryInfo()
     cout << "Library \"" << name << "\":" << endl;
     cout << "Opened from " << schedule.printOpen() << " to " << schedule.printClose() << endl;
     cout << "Address: " << address << endl;
-    cout << "Books number: " << booksNumber << endl;
+    cout << "Books number: " << books.size() << endl;
 }
 
 void Library::printBooks()
 {
-    if(booksNumber==0) cout << "No books in this library" << endl;
+    if(getBooksNumber()==0) cout << "No books in this library" << endl;
     else
     {
-        for(int i=0;i<booksNumber;i++)
+        for(int i=0;i<getBooksNumber();i++)
         {
             books[i].printBookInfo();
         }
@@ -105,7 +113,6 @@ void Library::printBooks()
 void Library::addBook(Book arg1)
 {
     books.emplace_back(arg1);
-    booksNumber++;
 }
 
 void Library::deleteBook(Book& arg1)
@@ -114,7 +121,6 @@ void Library::deleteBook(Book& arg1)
     if (position != books.end()) // == vector.end() means the element was not found
     {
         books.erase(position);
-        booksNumber--;
     }
     else cout << "Deletion error! There is no such book in this library" << endl;
 }
