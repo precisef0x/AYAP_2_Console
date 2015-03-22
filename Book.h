@@ -22,6 +22,7 @@ public:
     ~Book();
     Book& operator=(const Book &);
     bool operator==(const Book &);
+    friend ostream& operator<<(ostream&, const Book&);
     string getAuthor();
     string getTitle();
     int getPubYear();

@@ -53,6 +53,16 @@ Book& Book::operator=(const Book & input)
     return *copy;
 }
 
+ostream& operator<<(ostream& stream, const Book& input)
+{
+    stream << "Book \"" << input.title << "\" by " << input.author << ':' << endl;
+    stream << "Publishing year: " << input.pubYear << endl;
+    stream << "Rating: " << input.rating << endl;
+    stream << "Pages number: " << input.pagesNumber << endl;
+    stream << (input.available ? "Available " : "Not available ") << "in the library" << endl;
+    return stream;
+}
+
 string Book::getAuthor()
 {
     return author;
