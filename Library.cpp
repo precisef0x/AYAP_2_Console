@@ -6,6 +6,12 @@ Library::Library()
     address = "Unknown place";
 }
 
+Library::Library(string name, string address)
+{
+    this->name = name;
+    this->address = address;
+}
+
 Library::Library(string name, string address, vector<Book> books, Schedule schedule)
 {
     this->name = name;
@@ -29,8 +35,11 @@ Library::~Library()
 
 Library& Library::operator=(const Library &input)
 {
-    Library *newLibrary = new Library(input.name, input.address, input.books, input.schedule);
-    return *newLibrary;
+    this->name = input.name;
+    this->address = input.address;
+    this->books = input.books;
+    this->schedule = input.schedule;
+    return *this;
 }
 
 Library& Library::operator+(Library &input)
@@ -55,7 +64,7 @@ string Library::getAddress() const
     return address;
 }
 
-int Library::getBooksNumber() const
+int Library::getCount() const
 {
     return (int)books.size();
 }
@@ -100,34 +109,40 @@ void Library::printLibraryInfo()
 
 void Library::printBooks()
 {
-    if(getBooksNumber()==0) cout << "No books in this library" << endl;
+    if(getCount()==0) cout << "No books in this library" << endl;
     else
     {
-        for(int i=0;i<getBooksNumber();i++)
+        for(int i=0;i<getCount();i++)
         {
             books[i].printBookInfo();
         }
     }
 }
 
-void Library::addBook(Book arg1)
+void Library::add(const Book& book)
 {
-    books.emplace_back(arg1);
+    books.emplace_back(book);
 }
 
-void Library::deleteBook(Book& arg1)
+void Library::remove(const Book& book)
 {
-    vector<Book>::iterator position = find(books.begin(), books.end(), arg1);
-    if (position != books.end()) // == vector.end() means the element was not found
+    vector<Book>::iterator position = find(books.begin(), books.end(), book);
+    if (position != books.end())
     {
         books.erase(position);
     }
     else cout << "Deletion error! There is no such book in this library" << endl;
 }
 
-bool Library::containsBook(Book& arg1)
+void Library::remove(int index)
 {
-    if(find(books.begin(), books.end(), arg1) != books.end()) return true;
+    if(index <= getCount()) books.erase(books.begin() + index);
+    else cout << "No book at index" << index << " found";
+}
+
+bool Library::has(const Book& book)
+{
+    if(find(books.begin(), books.end(), book) != books.end()) return true;
     else return false;
 }
 
