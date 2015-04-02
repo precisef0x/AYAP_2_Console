@@ -49,8 +49,13 @@ bool Book::operator==(const Book & input)
 
 Book& Book::operator=(const Book & input)
 {
-    Book *copy = new Book(input.title, input.author, input.pubYear, input.rating, input.pagesNumber, input.available);
-    return *copy;
+    this->title = input.title;
+    this->author = input.author;
+    this->pubYear = input.pubYear;
+    this->rating = input.rating;
+    this->pagesNumber = input.pagesNumber;
+    this->available = input.available;
+    return *this;
 }
 
 ostream& operator<<(ostream& stream, const Book& input)
@@ -63,32 +68,32 @@ ostream& operator<<(ostream& stream, const Book& input)
     return stream;
 }
 
-string Book::getAuthor()
+string Book::getAuthor() const
 {
     return author;
 }
 
-string Book::getTitle()
+string Book::getTitle() const
 {
     return title;
 }
 
-int Book::getPubYear()
+int Book::getPubYear() const
 {
     return pubYear;
 }
 
-float Book::getRating()
+float Book::getRating() const
 {
     return rating;
 }
 
-int Book::getPagesNumber()
+int Book::getPagesNumber() const
 {
     return pagesNumber;
 }
 
-bool Book::getAvailable()
+bool Book::getAvailable() const
 {
     return available;
 }

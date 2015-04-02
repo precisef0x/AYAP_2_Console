@@ -52,12 +52,12 @@ string Schedule::printClose()
     return buffer.str();
 }
 
-Time Schedule::getOpenTime()
+Time Schedule::getOpenTime() const
 {
     return open;
 }
 
-Time Schedule::getCloseTime()
+Time Schedule::getCloseTime() const
 {
     return close;
 }

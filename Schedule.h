@@ -1,5 +1,4 @@
-#ifndef __AYAP_2_Console__Schedule__
-#define __AYAP_2_Console__Schedule__
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -26,10 +25,8 @@ public:
     Schedule& operator+(const Schedule&);
     string printOpen();
     string printClose();
-    Time getOpenTime();
-    Time getCloseTime();
+    Time getOpenTime() const;
+    Time getCloseTime() const;
     void setTime(Time open, Time close);
     void setTime(int openH,int openM,int closeH,int closeM);
 };
-
-#endif

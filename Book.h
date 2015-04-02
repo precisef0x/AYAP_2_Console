@@ -1,5 +1,4 @@
-#ifndef AYAP_2_Console_Book_h
-#define AYAP_2_Console_Book_h
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -23,20 +22,18 @@ public:
     Book& operator=(const Book &);
     bool operator==(const Book &);
     friend ostream& operator<<(ostream&, const Book&);
-    string getAuthor();
-    string getTitle();
-    int getPubYear();
-    float getRating();
-    int getPagesNumber();
-    bool getAvailable();
+    string getAuthor() const;
+    string getTitle() const;
+    int getPubYear() const;
+    float getRating() const;
+    int getPagesNumber() const;
+    bool getAvailable() const;
     void setAuthor(string);
     void setTitle(string);
     void setPubYear(int);
     void setRating(float);
     void setPagesNumber(int);
     void setAvailable(bool);
-    void setAllParameters(string, string, int, float, int, bool);
+    void setAllParameters(string title, string author, int pubYear, float rating, int pagesNumber, bool available);
     void printBookInfo();
 };
-
-#endif
