@@ -10,6 +10,16 @@ Book::Book()
     available = 0;
 }
 
+Book::Book(const Book & input)
+{
+    author = input.author;
+    title = input.title;
+    pubYear = input.pubYear;
+    rating = input.rating;
+    pagesNumber = input.pagesNumber;
+    available = input.available;
+}
+
 Book::Book(string title, string author, int pubYear, float rating, int pagesNumber, bool available)
 {
     this->title = title;
@@ -98,12 +108,12 @@ bool Book::getAvailable() const
     return available;
 }
 
-void Book::setAuthor(string arg1)
+void Book::setAuthor(const string& arg1)
 {
     author = arg1;
 }
 
-void Book::setTitle(string arg1)
+void Book::setTitle(const string& arg1)
 {
     title = arg1;
 }
@@ -128,7 +138,7 @@ void Book::setAvailable(bool arg1)
     available = arg1;
 }
 
-void Book::setAllParameters(string arg1, string arg2, int arg3, float arg4, int arg5, bool arg6)
+void Book::setAllParameters(const string& arg1, const string& arg2, int arg3, float arg4, int arg5, bool arg6)
 {
     author = arg1;
     title = arg2;

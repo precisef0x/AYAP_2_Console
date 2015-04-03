@@ -8,6 +8,14 @@ Schedule::Schedule()
     close.minutes = 59;
 }
 
+Schedule::Schedule(const Schedule & input)
+{
+    open.hours = input.open.hours;
+    open.minutes = input.open.minutes;
+    close.hours = input.close.hours;
+    close.minutes = input.close.minutes;
+}
+
 Schedule::Schedule(int openH,int openM,int closeH,int closeM)
 {
     this->open.hours = openH;

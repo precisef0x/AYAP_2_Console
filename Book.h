@@ -16,6 +16,7 @@ private:
     bool available;
 public:
     Book();
+    Book(const Book &);
     Book(string title, string author, int pubYear, float rating, int pagesNumber, bool available);
     Book(string title, string author, bool available);
     ~Book();
@@ -28,12 +29,12 @@ public:
     float getRating() const;
     int getPagesNumber() const;
     bool getAvailable() const;
-    void setAuthor(string);
-    void setTitle(string);
+    void setAuthor(const string&);
+    void setTitle(const string&);
     void setPubYear(int);
     void setRating(float);
     void setPagesNumber(int);
     void setAvailable(bool);
-    void setAllParameters(string title, string author, int pubYear, float rating, int pagesNumber, bool available);
+    void setAllParameters(const string& title, const string& author, int pubYear, float rating, int pagesNumber, bool available);
     void printBookInfo();
 };

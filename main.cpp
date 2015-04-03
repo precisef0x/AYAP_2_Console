@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Book.h"
 #include "Library.h"
+#include "Exceptions.h"
 
 int main(void)
 {
@@ -35,6 +36,14 @@ int main(void)
     Library lib2(*lib);
     Book *book2 = new Book("Cool title", "A genius", 2015, 0.12, 200, 1);
     lib2.add(*book2);
+    try
+    {
+        lib2.add(*book2);
+    }
+    catch(exception& e)
+    {
+        cout << "Error: " << e.what() << endl;
+    }
     
     cout <<endl << "New library: " << endl;
     lib2.printLibraryInfo();
@@ -56,6 +65,23 @@ int main(void)
     cout << endl;
     lib3.printLibraryInfo();
     lib3.printBooks();
+    try
+    {
+        lib2.remove(100);
+    }
+    catch(BookNotFoundException& e)
+    {
+        cout << "Error: " << e.what() << endl;
+    }
+    
+    try
+    {
+        lib3.remove(*book2);
+    }
+    catch(BookNotFoundException& e)
+    {
+        cout << "Error: " << e.what() << endl;
+    }
     
     delete lib;
     delete book2;

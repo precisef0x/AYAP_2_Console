@@ -1,4 +1,5 @@
 #include "Library.h"
+#include "Exceptions.h"
 
 Library::Library()
 {
@@ -6,13 +7,13 @@ Library::Library()
     address = "Unknown place";
 }
 
-Library::Library(string name, string address)
+Library::Library(const string& name, const string& address)
 {
     this->name = name;
     this->address = address;
 }
 
-Library::Library(string name, string address, vector<Book> books, Schedule schedule)
+Library::Library(const string& name, const string& address, vector<Book> books, Schedule schedule)
 {
     this->name = name;
     this->address = address;
@@ -20,7 +21,7 @@ Library::Library(string name, string address, vector<Book> books, Schedule sched
     this->schedule = schedule;
 }
 
-Library::Library(Library& input)
+Library::Library(const Library& input)
 {
     this->name = input.name;
     this->address = input.address;
@@ -33,7 +34,7 @@ Library::~Library()
     books.clear();
 }
 
-Library& Library::operator=(const Library &input)
+Library & Library::operator=(const Library &input)
 {
     this->name = input.name;
     this->address = input.address;
@@ -42,16 +43,23 @@ Library& Library::operator=(const Library &input)
     return *this;
 }
 
-Library& Library::operator+(Library &input)
+Library & Library::operator+(const Library &input)
 {
     Library *newLibrary = new Library();
     newLibrary->setName(this->getName() + " & " + input.getName());
     vector<Book> newVector = this->getBooks();
-    newVector.insert( newVector.end(), input.getBooks().begin(), input.getBooks().end());
+    newVector.insert( newVector.end(), input.books.begin(), input.books.end());
     newLibrary->setBooks(newVector);
     newLibrary->setAddress(this->getAddress() + " & " + input.getAddress());
     newLibrary->setSchedule(this->getSchedule() + input.schedule);
     return *newLibrary;
+}
+
+Book & Library::operator[](int index)
+{
+    if(index < books.size())
+        return books[index];
+    else throw BookNotFoundException(index);
 }
 
 string Library::getName() const
@@ -79,12 +87,12 @@ Schedule& Library::getSchedule()
     return schedule;
 }
 
-void Library::setName(string arg1)
+void Library::setName(const string& arg1)
 {
     name = arg1;
 }
 
-void Library::setAddress(string arg1)
+void Library::setAddress(const string& arg1)
 {
     address = arg1;
 }
@@ -121,6 +129,10 @@ void Library::printBooks()
 
 void Library::add(const Book& book)
 {
+    for (Book& value : books)
+    {
+        if(value == book) throw BookAlreadyExistsException(book);
+    }
     books.emplace_back(book);
 }
 
@@ -131,13 +143,13 @@ void Library::remove(const Book& book)
     {
         books.erase(position);
     }
-    else cout << "Deletion error! There is no such book in this library" << endl;
+    else throw BookNotFoundException(book);
 }
 
 void Library::remove(int index)
 {
     if(index <= getCount()) books.erase(books.begin() + index);
-    else cout << "No book at index" << index << " found";
+    else throw BookNotFoundException(index);
 }
 
 bool Library::has(const Book& book)
@@ -145,8 +157,3 @@ bool Library::has(const Book& book)
     if(find(books.begin(), books.end(), book) != books.end()) return true;
     else return false;
 }
-
-//Book& Library::findBookByName(string)
-//{
-//    return NULL;
-//}
